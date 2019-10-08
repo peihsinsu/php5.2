@@ -12,4 +12,9 @@ RUN apt-get update \
     && ./configure \
     && make \
     && make install \
-    && echo extension=gmp.so > /usr/local/etc/php/php.ini
+    && cd ../bcmath \
+    && phpize \
+    && ./configure \
+    && make \
+    && make install \
+    && printf "extension=gmp.so\nextension=bcmath.so" > /usr/local/etc/php/php.ini
